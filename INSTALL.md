@@ -100,6 +100,22 @@ yum install -y automake bzip2 cmake make gcc-c++ gcc git openssl openssl-devel g
 apt-get install -y automake bzip2 cmake make g++ gcc git openssl libssl-dev libgnutls28-dev libtool patch uuid-dev
 ```
 
+```
+# Ubuntu18.04
+cd proxysql/
+apt update
+apt-get install -y vim automake bzip2 cmake make g++ gcc git openssl libssl-dev libgnutls28-dev libtool patch uuid-dev
+GIT_VERSION=2.x-dev make
+apt install python3.6
+ln -s /usr/bin/python3.6 /usr/bin/python3
+GIT_VERSION=2.x-dev make install
+service proxysql start
+apt update
+apt install mysql-client=5.7.*
+apt install mysql-server=5.7.*
+mysql -u admin -padmin -h 127.0.0.1 -P6032 --prompt='Admin> '
+```
+
 For more details, inspect the docker build images:
 
 https://github.com/ProxySQL/docker-images/tree/main/build-images
